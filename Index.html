@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <style>
+      body {
+        background: linear-gradient(to right, white, gray);
+        font-family: sans-serif;
+        padding: 20px;
+      }
+
+      details {
+        background: linear-gradient(to right, lightgray, lightgray, lightgray);
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 8px;
+      }
+
+      #time2 {
+        font-family: monospace;
+        background: linear-gradient(to right, gray, black);
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 style="text-align: center;">Clock API</h1>
+
+    <details>
+      <summary id="time">Current Time:</summary>
+      <h3 id="showtime"></h3>
+    </details>
+
+    <details>
+      <summary>Current Date:</summary>
+      <h3 id="showdate"></h3>
+    </details>
+
+    <details>
+      <summary>Current Day:</summary>
+      <h3 id="showday"></h3>
+    </details>
+
+    <h1 id="time2"></h1>
+    <h3 id="zone"></h3>
+
+    <script>
+      const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+      const todayIndex = new Date().getDay();
+      const currentDayName = days[(todayIndex + 6) % 7];
+      document.getElementById("showday").innerText = "The Day is " + currentDayName;
+
+      const today = new Date();
+      const date = today.toLocaleDateString();
+      document.getElementById("showdate").innerText = "The date is " + date;
+
+      setInterval(() => {
+        const now = new Date();
+        const hour = now.getHours();
+        document.getElementById("showtime").innerText = "The Time is " + now.toLocaleTimeString();
+
+        if (hour >= 16) {
+          document.getElementById("time2").innerText = "It's late! Go have some rest.";
+        } else if (hour < 12) {
+          document.getElementById("time2").innerText = "It's early! Go have some fun!";
+        }
+        else {
+ document.getElementById("time2").innerText = "It's the middle of the day! Enjoy it!"
+        }
+      }, 1000);
+
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      document.getElementById("zone").innerText = "Timezone: " + timezone;
+    </script>
+  </body>
+</html>
