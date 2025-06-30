@@ -62,10 +62,14 @@
         document.getElementById("showtime").innerText = "The Time is " + now.toLocaleTimeString();
 
         if (hour >= 16) {
-          document.getElementById("time2").innerText = "It's late! Go have some rest.";
+          document.getElementById("time2").innerText = "It's evening! Just relax right now!";
         } else if (hour < 12) {
           document.getElementById("time2").innerText = "It's early! Go have some fun!";
         }
+          else if (hour >= 20) {
+            document.getElementById("time2").innerText = "It's late! Go have some rest.";
+          }
+            
         else {
  document.getElementById("time2").innerText = "It's the middle of the day! Enjoy it!"
         }
