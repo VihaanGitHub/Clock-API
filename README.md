@@ -18,4 +18,4 @@ You can add the WHOLE API with this code in your project:
   style="border: none;">
 </iframe>
 ```
-Hope you like this API!
+Hope you like this API! 
